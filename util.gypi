@@ -15,7 +15,7 @@
             ['exclude', '<(win_file_pattern)'],
             ['exclude', '<(linux_file_pattern)'],
         ],
-        'conditions': [
+        'conditions+': [
             ['OS=="mac"', {
                 'sources/': [['include', '<(mac_file_pattern)']],
                 'include_dirs/': [['include', '<(mac_file_pattern)']],

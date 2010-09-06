@@ -1,13 +1,24 @@
 {
+    'variables': {
+        'mac_file_pattern': '(^|/)(mac|posix)(/|$)',
+        'win_file_pattern': '(^|/)(win)(/|$)',
+        'linux_file_pattern': '(^|/)(linux|posix)(/|$)',
+    },
     'target_defaults': {
+        'sources/': [
+            ['exclude', '<(mac_file_pattern)'],
+            ['exclude', '<(win_file_pattern)'],
+            ['exclude', '<(linux_file_pattern)'],
+        ],
+        'include_dirs/': [
+            ['exclude', '<(mac_file_pattern)'],
+            ['exclude', '<(win_file_pattern)'],
+            ['exclude', '<(linux_file_pattern)'],
+        ],
         'conditions': [
             ['OS=="mac"', {
-                'sources/': [
-                    ['exclude', '/(win|linux)/'],
-                ],
-                'include_dirs/': [
-                    ['exclude', '/(win|linux)$'],
-                ],
+                'sources/': [['include', '<(mac_file_pattern)']],
+                'include_dirs/': [['include', '<(mac_file_pattern)']],
                 'xcode_settings': {
                     'GCC_TREAT_WARNINGS_AS_ERRORS': 'YES',
                     'GCC_SYMBOLS_PRIVATE_EXTERN': 'YES',
@@ -21,20 +32,12 @@
                 },
             }],
             ['OS=="win"', {
-                'sources/': [
-                    ['exclude', '/(mac|linux|posix)/'],
-                ],
-                'include_dirs/': [
-                    ['exclude', '/(mac|linux|posix)$'],
-                ],
+                'sources/': [['include', '<(win_file_pattern)']],
+                'include_dirs/': [['include', '<(win_file_pattern)']],
             }],
             ['OS=="linux"', {
-                'sources/': [
-                    ['exclude', '/(mac|win)/'],
-                ],
-                'include_dirs/': [
-                    ['exclude', '/(mac|win)$'],
-                ],
+                'sources/': [['include', '<(linux_file_pattern)']],
+                'include_dirs/': [['include', '<(linux_file_pattern)']],
             }],
         ],
     },

@@ -48,12 +48,9 @@
             'actions': [
                 {
                     'action_name': 'check-deps',
-                    'inputs': [ ],
-                    'outputs': [ ],
-                    'action': [
-                        '<(DEPTH)/ext/gyputil/check-deps.sh',
-                        '<(DEPTH)',
-                    ],
+                    'inputs': [],
+                    'outputs': [],
+                    'action': ['<(DEPTH)/ext/gyputil/check-deps.sh'],
                 },
             ],
         },

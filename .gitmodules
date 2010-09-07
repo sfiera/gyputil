@@ -1,0 +1,3 @@
+[submodule "ext/gyp"]
+	path = ext/gyp
+	url = git://github.com/sfiera/gyp.git
